@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9257AC29-808A-4022-9263-7054819E1312}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SqlServerStatistics</RootNamespace>
+    <AssemblyName>SqlServerStatistics</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ExcelFunctions.cs" />
+    <Compile Include="MathNet\ArrayExtensions.cs" />
+    <Compile Include="MathNet\Combinatorics.cs" />
+    <Compile Include="MathNet\Compatibility.cs" />
+    <Compile Include="MathNet\Complex32.cs" />
+    <Compile Include="MathNet\Complex64.cs" />
+    <Compile Include="MathNet\ComplexExtensions.cs" />
+    <Compile Include="MathNet\Constants.cs" />
+    <Compile Include="MathNet\Control.cs" />
+    <Compile Include="MathNet\Differentiate.cs" />
+    <Compile Include="MathNet\Differentiation\FiniteDifferenceCoefficients.cs" />
+    <Compile Include="MathNet\Differentiation\NumericalDerivative.cs" />
+    <Compile Include="MathNet\Differentiation\NumericalHessian.cs" />
+    <Compile Include="MathNet\Differentiation\NumericalJacobian.cs" />
+    <Compile Include="MathNet\Distance.cs" />
+    <Compile Include="MathNet\Distributions\Bernoulli.cs" />
+    <Compile Include="MathNet\Distributions\Beta.cs" />
+    <Compile Include="MathNet\Distributions\Binomial.cs" />
+    <Compile Include="MathNet\Distributions\Categorical.cs" />
+    <Compile Include="MathNet\Distributions\Cauchy.cs" />
+    <Compile Include="MathNet\Distributions\Chi.cs" />
+    <Compile Include="MathNet\Distributions\ChiSquared.cs" />
+    <Compile Include="MathNet\Distributions\ContinuousUniform.cs" />
+    <Compile Include="MathNet\Distributions\ConwayMaxwellPoisson.cs" />
+    <Compile Include="MathNet\Distributions\Dirichlet.cs" />
+    <Compile Include="MathNet\Distributions\DiscreteUniform.cs" />
+    <Compile Include="MathNet\Distributions\Erlang.cs" />
+    <Compile Include="MathNet\Distributions\Exponential.cs" />
+    <Compile Include="MathNet\Distributions\FisherSnedecor.cs" />
+    <Compile Include="MathNet\Distributions\Gamma.cs" />
+    <Compile Include="MathNet\Distributions\Geometric.cs" />
+    <Compile Include="MathNet\Distributions\Hypergeometric.cs" />
+    <Compile Include="MathNet\Distributions\IContinuousDistribution.cs" />
+    <Compile Include="MathNet\Distributions\IDiscreteDistribution.cs" />
+    <Compile Include="MathNet\Distributions\IDistribution.cs" />
+    <Compile Include="MathNet\Distributions\InverseGamma.cs" />
+    <Compile Include="MathNet\Distributions\InverseWishart.cs" />
+    <Compile Include="MathNet\Distributions\IUnivariateDistribution.cs" />
+    <Compile Include="MathNet\Distributions\Laplace.cs" />
+    <Compile Include="MathNet\Distributions\LogNormal.cs" />
+    <Compile Include="MathNet\Distributions\MatrixNormal.cs" />
+    <Compile Include="MathNet\Distributions\Multinomial.cs" />
+    <Compile Include="MathNet\Distributions\NegativeBinomial.cs" />
+    <Compile Include="MathNet\Distributions\Normal.cs" />
+    <Compile Include="MathNet\Distributions\NormalGamma.cs" />
+    <Compile Include="MathNet\Distributions\Pareto.cs" />
+    <Compile Include="MathNet\Distributions\Poisson.cs" />
+    <Compile Include="MathNet\Distributions\Rayleigh.cs" />
+    <Compile Include="MathNet\Distributions\Stable.cs" />
+    <Compile Include="MathNet\Distributions\StudentT.cs" />
+    <Compile Include="MathNet\Distributions\Triangular.cs" />
+    <Compile Include="MathNet\Distributions\Weibull.cs" />
+    <Compile Include="MathNet\Distributions\Wishart.cs" />
+    <Compile Include="MathNet\Distributions\Zipf.cs" />
+    <Compile Include="MathNet\Euclid.cs" />
+    <Compile Include="MathNet\ExcelFunctions.cs" />
+    <Compile Include="MathNet\Exceptions.cs" />
+    <Compile Include="MathNet\Financial\AbsoluteReturnMeasures.cs" />
+    <Compile Include="MathNet\Financial\AbsoluteRiskMeasures.cs" />
+    <Compile Include="MathNet\FindRoots.cs" />
+    <Compile Include="MathNet\Fit.cs" />
+    <Compile Include="MathNet\Generate.cs" />
+    <Compile Include="MathNet\GlobalizationHelper.cs" />
+    <Compile Include="MathNet\GoodnessOfFit.cs" />
+    <Compile Include="MathNet\IntegralTransforms\Fourier.Bluestein.cs" />
+    <Compile Include="MathNet\IntegralTransforms\Fourier.cs" />
+    <Compile Include="MathNet\IntegralTransforms\Fourier.Naive.cs" />
+    <Compile Include="MathNet\IntegralTransforms\Fourier.RadixN.cs" />
+    <Compile Include="MathNet\IntegralTransforms\FourierOptions.cs" />
+    <Compile Include="MathNet\IntegralTransforms\Hartley.cs" />
+    <Compile Include="MathNet\IntegralTransforms\Hartley.Naive.cs" />
+    <Compile Include="MathNet\IntegralTransforms\HartleyOptions.cs" />
+    <Compile Include="MathNet\Integrate.cs" />
+    <Compile Include="MathNet\Integration\DoubleExponentialTransformation.cs" />
+    <Compile Include="MathNet\Integration\NewtonCotesTrapeziumRule.cs" />
+    <Compile Include="MathNet\Integration\SimpsonRule.cs" />
+    <Compile Include="MathNet\Interpolate.cs" />
+    <Compile Include="MathNet\Interpolation\Barycentric.cs" />
+    <Compile Include="MathNet\Interpolation\BulirschStoerRationalInterpolation.cs" />
+    <Compile Include="MathNet\Interpolation\CubicSpline.cs" />
+    <Compile Include="MathNet\Interpolation\IInterpolation.cs" />
+    <Compile Include="MathNet\Interpolation\LinearSpline.cs" />
+    <Compile Include="MathNet\Interpolation\LogLinear.cs" />
+    <Compile Include="MathNet\Interpolation\NevillePolynomialInterpolation.cs" />
+    <Compile Include="MathNet\Interpolation\QuadraticSpline.cs" />
+    <Compile Include="MathNet\Interpolation\SplineBoundaryCondition.cs" />
+    <Compile Include="MathNet\Interpolation\StepInterpolation.cs" />
+    <Compile Include="MathNet\Interpolation\TransformedInterpolation.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Builder.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\DenseMatrix.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\DenseVector.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\DiagonalMatrix.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Factorization\Cholesky.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Factorization\DenseCholesky.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Factorization\DenseEvd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Factorization\DenseGramSchmidt.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Factorization\DenseLU.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Factorization\DenseQR.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Factorization\DenseSvd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Factorization\Evd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Factorization\GramSchmidt.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Factorization\LU.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Factorization\QR.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Factorization\Svd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Factorization\UserCholesky.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Factorization\UserEvd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Factorization\UserGramSchmidt.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Factorization\UserLU.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Factorization\UserQR.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Factorization\UserSvd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Matrix.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Solvers\BiCgStab.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Solvers\CompositeSolver.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Solvers\DiagonalPreconditioner.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Solvers\GpBiCg.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Solvers\ILU0Preconditioner.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Solvers\ILUTPPreconditioner.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Solvers\MILU0Preconditioner.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Solvers\MlkBiCgStab.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Solvers\TFQMR.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\SparseMatrix.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\SparseVector.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex32\Vector.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\DenseMatrix.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\DenseVector.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\DiagonalMatrix.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Factorization\Cholesky.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Factorization\DenseCholesky.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Factorization\DenseEvd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Factorization\DenseGramSchmidt.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Factorization\DenseLU.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Factorization\DenseQR.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Factorization\DenseSvd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Factorization\Evd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Factorization\GramSchmidt.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Factorization\LU.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Factorization\QR.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Factorization\Svd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Factorization\UserCholesky.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Factorization\UserEvd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Factorization\UserGramSchmidt.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Factorization\UserLU.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Factorization\UserQR.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Factorization\UserSvd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Matrix.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Solvers\BiCgStab.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Solvers\CompositeSolver.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Solvers\DiagonalPreconditioner.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Solvers\GpBiCg.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Solvers\ILU0Preconditioner.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Solvers\ILUTPPreconditioner.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Solvers\MILU0Preconditioner.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Solvers\MlkBiCgStab.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Solvers\TFQMR.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\SparseMatrix.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\SparseVector.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Complex\Vector.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\DenseMatrix.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\DenseVector.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\DiagonalMatrix.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Factorization\Cholesky.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Factorization\DenseCholesky.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Factorization\DenseEvd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Factorization\DenseGramSchmidt.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Factorization\DenseLU.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Factorization\DenseQR.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Factorization\DenseSvd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Factorization\Evd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Factorization\GramSchmidt.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Factorization\LU.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Factorization\QR.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Factorization\Svd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Factorization\UserCholesky.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Factorization\UserEvd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Factorization\UserGramSchmidt.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Factorization\UserLU.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Factorization\UserQR.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Factorization\UserSvd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Matrix.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Solvers\BiCgStab.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Solvers\CompositeSolver.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Solvers\DiagonalPreconditioner.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Solvers\GpBiCg.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Solvers\ILU0Preconditioner.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Solvers\ILUTPPreconditioner.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Solvers\MILU0Preconditioner.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Solvers\MlkBiCgStab.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Solvers\TFQMR.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\SparseMatrix.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\SparseVector.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Double\Vector.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Factorization\Cholesky.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Factorization\Evd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Factorization\GramSchmidt.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Factorization\ISolver.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Factorization\LU.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Factorization\QR.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Factorization\Svd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\IBuilder.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Matrix.Arithmetic.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Matrix.BCL.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Matrix.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Matrix.Operators.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Matrix.Solve.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Options.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\DenseMatrix.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\DenseVector.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\DiagonalMatrix.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Factorization\Cholesky.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Factorization\DenseCholesky.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Factorization\DenseEvd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Factorization\DenseGramSchmidt.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Factorization\DenseLU.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Factorization\DenseQR.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Factorization\DenseSvd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Factorization\Evd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Factorization\GramSchmidt.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Factorization\LU.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Factorization\QR.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Factorization\Svd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Factorization\UserCholesky.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Factorization\UserEvd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Factorization\UserGramSchmidt.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Factorization\UserLU.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Factorization\UserQR.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Factorization\UserSvd.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Matrix.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Solvers\BiCgStab.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Solvers\CompositeSolver.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Solvers\DiagonalPreconditioner.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Solvers\GpBiCg.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Solvers\ILU0Preconditioner.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Solvers\ILUTPPreconditioner.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Solvers\MILU0Preconditioner.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Solvers\MlkBiCgStab.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Solvers\TFQMR.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\SparseMatrix.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\SparseVector.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Single\Vector.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Solvers\CancellationStopCriterion.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Solvers\DelegateStopCriterion.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Solvers\DivergenceStopCriterion.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Solvers\FailureStopCriterion.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Solvers\IIterationStopCriterion.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Solvers\IIterativeSolver.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Solvers\IIterativeSolverSetup.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Solvers\IPreconditioner.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Solvers\IterationCountStopCriterion.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Solvers\IterationStatus.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Solvers\Iterator.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Solvers\ResidualStopCriterion.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Solvers\SolverSetup.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Solvers\UnitPreconditioner.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Storage\DenseColumnMajorMatrixStorage.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Storage\DenseVectorStorage.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Storage\DiagonalMatrixStorage.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Storage\MatrixStorage.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Storage\MatrixStorage.Validation.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Storage\SparseCompressedRowMatrixStorage.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Storage\SparseVectorStorage.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Storage\VectorStorage.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Storage\VectorStorage.Validation.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Vector.Arithmetic.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Vector.BCL.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Vector.cs" />
+    <Compile Include="MathNet\LinearAlgebra\Vector.Operators.cs" />
+    <Compile Include="MathNet\LinearRegression\MultipleRegression.cs" />
+    <Compile Include="MathNet\LinearRegression\Options.cs" />
+    <Compile Include="MathNet\LinearRegression\SimpleRegression.cs" />
+    <Compile Include="MathNet\LinearRegression\Util.cs" />
+    <Compile Include="MathNet\LinearRegression\WeightedRegression.cs" />
+    <Compile Include="MathNet\Permutation.cs" />
+    <Compile Include="MathNet\Precision.Comparison.cs" />
+    <Compile Include="MathNet\Precision.cs" />
+    <Compile Include="MathNet\Precision.Equality.cs" />
+    <Compile Include="MathNet\Properties\Resources.Designer.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\Acml\AcmlLinearAlgebraProvider.Complex.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\Acml\AcmlLinearAlgebraProvider.Complex32.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\Acml\AcmlLinearAlgebraProvider.Double.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\Acml\AcmlLinearAlgebraProvider.Single.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\Acml\SafeNativeMethods.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\GotoBlas\GotoBlasLinearAlgebraProvider.Complex.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\GotoBlas\GotoBlasLinearAlgebraProvider.Complex32.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\GotoBlas\GotoBlasLinearAlgebraProvider.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\GotoBlas\GotoBlasLinearAlgebraProvider.Double.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\GotoBlas\GotoBlasLinearAlgebraProvider.Single.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\GotoBlas\SafeNativeMethods.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\ILinearAlgebraProvider.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\ManagedLinearAlgebraProvider.Complex.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\ManagedLinearAlgebraProvider.Complex32.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\ManagedLinearAlgebraProvider.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\ManagedLinearAlgebraProvider.Double.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\ManagedLinearAlgebraProvider.Single.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\Mkl\MklLinearAlgebraProvider.Complex.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\Mkl\MklLinearAlgebraProvider.Complex32.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\Mkl\MklLinearAlgebraProvider.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\Mkl\MklLinearAlgebraProvider.Double.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\Mkl\MklLinearAlgebraProvider.Single.cs" />
+    <Compile Include="MathNet\Providers\LinearAlgebra\Mkl\SafeNativeMethods.cs" />
+    <Compile Include="MathNet\Random\CryptoRandomSource.cs" />
+    <Compile Include="MathNet\Random\Mcg31m1.cs" />
+    <Compile Include="MathNet\Random\Mcg59.cs" />
+    <Compile Include="MathNet\Random\MersenneTwister.cs" />
+    <Compile Include="MathNet\Random\Mrg32k3a.cs" />
+    <Compile Include="MathNet\Random\Palf.cs" />
+    <Compile Include="MathNet\Random\RandomExtensions.cs" />
+    <Compile Include="MathNet\Random\RandomSeed.cs" />
+    <Compile Include="MathNet\Random\RandomSource.cs" />
+    <Compile Include="MathNet\Random\SystemRandomSource.cs" />
+    <Compile Include="MathNet\Random\WH1982.cs" />
+    <Compile Include="MathNet\Random\WH2006.cs" />
+    <Compile Include="MathNet\Random\Xorshift.cs" />
+    <Compile Include="MathNet\RootFinding\Bisection.cs" />
+    <Compile Include="MathNet\RootFinding\Brent.cs" />
+    <Compile Include="MathNet\RootFinding\Broyden.cs" />
+    <Compile Include="MathNet\RootFinding\Cubic.cs" />
+    <Compile Include="MathNet\RootFinding\NewtonRaphson.cs" />
+    <Compile Include="MathNet\RootFinding\RobustNewtonRaphson.cs" />
+    <Compile Include="MathNet\RootFinding\ZeroCrossingBracketing.cs" />
+    <Compile Include="MathNet\Sorting.cs" />
+    <Compile Include="MathNet\SpecialFunctions\Beta.cs" />
+    <Compile Include="MathNet\SpecialFunctions\Erf.cs" />
+    <Compile Include="MathNet\SpecialFunctions\Evaluate.cs" />
+    <Compile Include="MathNet\SpecialFunctions\ExponentialIntegral.cs" />
+    <Compile Include="MathNet\SpecialFunctions\Factorial.cs" />
+    <Compile Include="MathNet\SpecialFunctions\Gamma.cs" />
+    <Compile Include="MathNet\SpecialFunctions\Harmonic.cs" />
+    <Compile Include="MathNet\SpecialFunctions\Logistic.cs" />
+    <Compile Include="MathNet\SpecialFunctions\ModifiedBessel.cs" />
+    <Compile Include="MathNet\SpecialFunctions\ModifiedStruve.cs" />
+    <Compile Include="MathNet\SpecialFunctions\Stability.cs" />
+    <Compile Include="MathNet\SpecialFunctions\TestFunctions.cs" />
+    <Compile Include="MathNet\Statistics\ArrayStatistics.cs" />
+    <Compile Include="MathNet\Statistics\Correlation.cs" />
+    <Compile Include="MathNet\Statistics\DescriptiveStatistics.cs" />
+    <Compile Include="MathNet\Statistics\Histogram.cs" />
+    <Compile Include="MathNet\Statistics\MCMC\HybridMC.cs" />
+    <Compile Include="MathNet\Statistics\MCMC\HybridMCGeneric.cs" />
+    <Compile Include="MathNet\Statistics\MCMC\MCMCDiagnostics.cs" />
+    <Compile Include="MathNet\Statistics\MCMC\MCMCSampler.cs" />
+    <Compile Include="MathNet\Statistics\MCMC\MetropolisHastingsSampler.cs" />
+    <Compile Include="MathNet\Statistics\MCMC\MetropolisSampler.cs" />
+    <Compile Include="MathNet\Statistics\MCMC\RejectionSampler.cs" />
+    <Compile Include="MathNet\Statistics\MCMC\UnivariateHybridMC.cs" />
+    <Compile Include="MathNet\Statistics\MCMC\UnivariateSliceSampler.cs" />
+    <Compile Include="MathNet\Statistics\QuantileDefinition.cs" />
+    <Compile Include="MathNet\Statistics\RankDefinition.cs" />
+    <Compile Include="MathNet\Statistics\RunningStatistics.cs" />
+    <Compile Include="MathNet\Statistics\SortedArrayStatistics.cs" />
+    <Compile Include="MathNet\Statistics\Statistics.cs" />
+    <Compile Include="MathNet\Statistics\StreamingStatistics.cs" />
+    <Compile Include="MathNet\Threading\CommonParallel.cs" />
+    <Compile Include="MathNet\Trigonometry.cs" />
+    <Compile Include="MathNet\Window.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpecialFunctions.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="MathNet\Properties\Resources.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
