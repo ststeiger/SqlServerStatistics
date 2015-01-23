@@ -306,9 +306,6 @@ GO
 
 
 
-
-
-
 				sb.Append(@"
 CREATE " + methodType + " [dbo].[" + mi.Name.Replace("]", "]]") + @"](");
 
@@ -320,6 +317,8 @@ CREATE " + methodType + " [dbo].[" + mi.Name.Replace("]", "]]") + @"](");
                     System.Type tReal = pi.ParameterType;
 
                     // WTF ?
+                    // http://www.blackwasp.co.uk/ReflectOutRefParams.aspx
+                    // http://stackoverflow.com/questions/738277/net-reflection-how-to-get-real-type-from-out-parameterinfo
                     if (pi.IsOut || pi.ParameterType.IsByRef)
                         tReal = tReal.GetElementType();
 
