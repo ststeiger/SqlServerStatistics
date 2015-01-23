@@ -34,7 +34,7 @@
             // txtScript
             // 
             this.txtScript.Location = new System.Drawing.Point(10, 11);
-            this.txtScript.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtScript.Margin = new System.Windows.Forms.Padding(2);
             this.txtScript.Multiline = true;
             this.txtScript.Name = "txtScript";
             this.txtScript.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -48,8 +48,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(574, 344);
             this.Controls.Add(this.txtScript);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CLR-Functions ScriptGenerator";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResumeLayout(false);

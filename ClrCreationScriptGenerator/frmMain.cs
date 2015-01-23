@@ -9,7 +9,6 @@ namespace ClrCreationScriptGenerator
     public partial class frmMain : Form
     {
 
-        
 
         public frmMain()
         {
@@ -17,12 +16,9 @@ namespace ClrCreationScriptGenerator
         } // End Constructor
         
 
-
         private void frmMain_Load(object sender, System.EventArgs e)
         {
             this.txtScript.WordWrap = false;
-			this.StartPosition = FormStartPosition.CenterScreen;
-
             bool bLocal = true;
             bool warnCRL = false;
             string assemblyName = "SQLServerStatistics";
