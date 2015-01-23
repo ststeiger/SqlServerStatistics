@@ -10,8 +10,63 @@ namespace SqlServerStatistics
 	// http://numerics.mathdotnet.com/docs/Functions.html
 	public class SpecialFunctions
 	{
+
 		public SpecialFunctions()
 		{ }
+
+
+		[SqlProcedure()]
+		public static void InsertCurrency_CS(SqlString currencyCode, SqlString name)
+		{
+			/*
+			using (SqlConnection conn = new SqlConnection("context connection=true"))
+			{
+				SqlCommand InsertCurrencyCommand = new SqlCommand();
+				SqlParameter currencyCodeParam = new SqlParameter("@CurrencyCode", SqlDbType.NVarChar);
+				SqlParameter nameParam = new SqlParameter("@Name", SqlDbType.NVarChar);
+
+				currencyCodeParam.Value = currencyCode;
+				nameParam.Value = name;
+
+				InsertCurrencyCommand.Parameters.Add(currencyCodeParam);
+				InsertCurrencyCommand.Parameters.Add(nameParam);
+
+				InsertCurrencyCommand.CommandText =
+					"INSERT Sales.Currency (CurrencyCode, Name, ModifiedDate)" +
+					" VALUES(@CurrencyCode, @Name, GetDate())";
+
+				InsertCurrencyCommand.Connection = conn;
+
+				conn.Open();
+				InsertCurrencyCommand.ExecuteNonQuery();
+				conn.Close();
+			}
+			*/
+		}
+
+
+		[SqlProcedure]
+		public static void PriceSum(out SqlInt32 value)
+		{
+			value = 123;
+			/*
+			using(SqlConnection connection = new SqlConnection("context connection=true")) 
+			{
+				value = 0;
+				connection.Open();
+				SqlCommand command = new SqlCommand("SELECT Price FROM Products", connection);
+				SqlDataReader reader = command.ExecuteReader();
+
+				using (reader)
+				{
+					while( reader.Read() )
+					{
+						value += reader.GetSqlInt32(0);
+					}
+				}         
+			}
+			*/
+		}
 
 
 		[SqlFunction]

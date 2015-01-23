@@ -9,8 +9,7 @@ namespace ClrCreationScriptGenerator
     public partial class frmMain : Form
     {
 
-        System.Collections.Generic.Dictionary<System.Type, string> m_TypeDict = initTypeDict();
-
+        
 
         public frmMain()
         {
@@ -18,45 +17,22 @@ namespace ClrCreationScriptGenerator
         } // End Constructor
         
 
-        public static System.Collections.Generic.Dictionary<System.Type, string> initTypeDict()
-        {
-            //System.Collections.Specialized.StringDictionary sd = new System.Collections.Specialized.StringDictionary();
-            System.Collections.Generic.Dictionary<System.Type, string> dict = new System.Collections.Generic.Dictionary<System.Type, string>();
-            dict.Add(typeof(System.Data.SqlTypes.SqlBoolean), "bit");
-            dict.Add(typeof(System.Data.SqlTypes.SqlInt16), "smallint");
-            dict.Add(typeof(System.Data.SqlTypes.SqlInt32), "int");
-            dict.Add(typeof(System.Data.SqlTypes.SqlInt64), "bigint");
-            dict.Add(typeof(System.Data.SqlTypes.SqlSingle), "real");
-            dict.Add(typeof(System.Data.SqlTypes.SqlDouble), "float");
-            dict.Add(typeof(System.Data.SqlTypes.SqlMoney), "money");
-            dict.Add(typeof(System.Data.SqlTypes.SqlDecimal), "decimal(19,5)");
-            dict.Add(typeof(System.Data.SqlTypes.SqlString), "nvarchar(4000)");
-            dict.Add(typeof(System.Data.SqlTypes.SqlGuid), "uniqueidentifier");
-            dict.Add(typeof(System.Data.SqlTypes.SqlDateTime), "datetime");
-
-            return dict;
-        }
-
 
         private void frmMain_Load(object sender, System.EventArgs e)
         {
             this.txtScript.WordWrap = false;
+			this.StartPosition = FormStartPosition.CenterScreen;
+
             bool bLocal = true;
-            bool warnCRL = true;
+            bool warnCRL = false;
             string assemblyName = "SQLServerStatistics";
-            System.Type tExcelFunctions = typeof(SqlServerStatistics.ExcelFunctions);
             
-
-
-            System.Reflection.Assembly ass = tExcelFunctions.Assembly;
+			System.Reflection.Assembly ass = typeof(SqlServerStatistics.ExcelFunctions).Assembly;
             byte[] bytes = System.IO.File.ReadAllBytes(ass.Location);
             string strHexFile = bLocal ? "'" + ass.Location.Replace("'", "''") + "'" : 
                 "0x" + System.BitConverter.ToString(bytes).Replace("-", "");
 
-            System.Reflection.MethodInfo[] mis = tExcelFunctions.GetMethods(System.Reflection.BindingFlags.Static
-                                                                            | System.Reflection.BindingFlags.Public
-            );
-
+            
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
 
             if(warnCRL)
@@ -243,15 +219,74 @@ GO
 ", assemblyName.Replace("'", "''"), strHexFile);
 
 
-            foreach (System.Reflection.MethodInfo mi in mis)
-            {
-                string strRetType = "Unknown_" + mi.ReturnType.Name;
+			WriteFunctionDefinition (assemblyName, sb);
 
-                if (m_TypeDict.ContainsKey(mi.ReturnType))
-                    strRetType = m_TypeDict[mi.ReturnType];
+            // http://stackoverflow.com/questions/9983378/monodevelop-convert-line-ending-dialog
+            // Compensate for line endings on different platforms...
+            this.txtScript.Text = sb.Replace("\r\n", "\n").Replace("\n", System.Environment.NewLine).ToString();
+        } // End Sub frmMain_Load
 
 
-                sb.AppendLine(@"         
+		public void WriteFunctionDefinition(string assemblyName, System.Text.StringBuilder sb)
+		{
+			System.Type t = typeof(SqlServerStatistics.ExcelFunctions);
+			System.Reflection.Assembly ass = t.Assembly;
+
+			System.Collections.Generic.Dictionary<System.Type, string> typeDict = initTypeDict();
+
+			foreach (System.Type tThisType in ass.GetTypes())
+			{
+				if (tThisType.FullName.StartsWith ("MathNet."))
+					continue;
+
+				if (string.IsNullOrEmpty (tThisType.Namespace))
+					continue;
+
+				// System.Console.WriteLine(tThisType.Namespace);
+				// System.Console.WriteLine(tThisType.FullName);
+				WriteFunctionDefinition (assemblyName, sb, tThisType, typeDict);
+			} // Next tThisType 
+
+		}
+
+
+		public static System.Collections.Generic.Dictionary<System.Type, string> initTypeDict()
+		{
+			//System.Collections.Specialized.StringDictionary sd = new System.Collections.Specialized.StringDictionary();
+			System.Collections.Generic.Dictionary<System.Type, string> dict = new System.Collections.Generic.Dictionary<System.Type, string>();
+			dict.Add(typeof(System.Data.SqlTypes.SqlBoolean), "bit");
+			dict.Add(typeof(System.Data.SqlTypes.SqlInt16), "smallint");
+			dict.Add(typeof(System.Data.SqlTypes.SqlInt32), "int");
+			dict.Add(typeof(System.Data.SqlTypes.SqlInt64), "bigint");
+			dict.Add(typeof(System.Data.SqlTypes.SqlSingle), "real");
+			dict.Add(typeof(System.Data.SqlTypes.SqlDouble), "float");
+			dict.Add(typeof(System.Data.SqlTypes.SqlMoney), "money");
+			dict.Add(typeof(System.Data.SqlTypes.SqlDecimal), "decimal(19,5)");
+			dict.Add(typeof(System.Data.SqlTypes.SqlString), "nvarchar(4000)");
+			dict.Add(typeof(System.Data.SqlTypes.SqlGuid), "uniqueidentifier");
+			dict.Add(typeof(System.Data.SqlTypes.SqlDateTime), "datetime");
+
+			return dict;
+		} // End Sub WriteFunctionDefinition
+
+
+		public void WriteFunctionDefinition(string assemblyName, System.Text.StringBuilder sb, System.Type t
+			,System.Collections.Generic.Dictionary<System.Type, string> typeDict)
+		{
+			System.Reflection.MethodInfo[] mis = t.GetMethods(System.Reflection.BindingFlags.Static
+				| System.Reflection.BindingFlags.Public
+			);
+
+
+			foreach (System.Reflection.MethodInfo mi in mis)
+			{
+				string strRetType = "Unknown_" + mi.ReturnType.Name;
+
+				if (typeDict.ContainsKey(mi.ReturnType))
+					strRetType = typeDict[mi.ReturnType];
+
+
+				sb.AppendLine(@"         
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[" + mi.Name.Replace("]", "]]") + @"]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
 DROP FUNCTION [dbo].[" + mi.Name.Replace("]", "]]") + @"]
 GO
@@ -260,38 +295,34 @@ GO
 ");
 
 
-                sb.Append(@"
+				sb.Append(@"
 CREATE FUNCTION [dbo].[" + mi.Name.Replace("]","]]") + @"](");
 
-                System.Reflection.ParameterInfo[] pis = mi.GetParameters();
-                for (int i = 0; i < pis.Length; ++i)
-                {
-                    System.Reflection.ParameterInfo pi = pis[i];
-                    string strParType = "Unknown_" + pi.ParameterType.Name;
+				System.Reflection.ParameterInfo[] pis = mi.GetParameters();
+				for (int i = 0; i < pis.Length; ++i)
+				{
+					System.Reflection.ParameterInfo pi = pis[i];
+					string strParType = "Unknown_" + pi.ParameterType.Name;
 
-                    if (m_TypeDict.ContainsKey(pi.ParameterType))
-                        strParType = m_TypeDict[pi.ParameterType];
+					if (typeDict.ContainsKey(pi.ParameterType))
+						strParType = typeDict[pi.ParameterType];
 
-                    if (i != 0)
-                        sb.Append(", ");
+					if (i != 0)
+						sb.Append(", ");
 
-                    sb.Append("@" + pi.Name + " AS " + strParType);
-                } // Next i 
+					sb.Append("@" + pi.Name + " AS " + strParType);
+				} // Next i 
 
-                sb.AppendLine(@")
+				sb.AppendLine(@")
     RETURNS " + strRetType + @" WITH EXECUTE AS CALLER
-AS EXTERNAL NAME [" + assemblyName.Replace("]", "]]") + @"].[" + tExcelFunctions.FullName.Replace("]", "]]") + @"].[" + mi.Name.Replace("]", "]]") + @"]
+AS EXTERNAL NAME [" + assemblyName.Replace("]", "]]") + @"].[" + t.FullName.Replace("]", "]]") + @"].[" + mi.Name.Replace("]", "]]") + @"]
 GO
 
 ");
 
+			} // Next mi 
 
-            } // Next mi 
-
-            // http://stackoverflow.com/questions/9983378/monodevelop-convert-line-ending-dialog
-            // Compensate for line endings on different platforms...
-            this.txtScript.Text = sb.Replace("\r\n", "\n").Replace("\n", System.Environment.NewLine).ToString();
-        } // End Sub frmMain_Load
+		} // End Sub WriteFunctionDefinition
 
 
         private void txtScript_KeyDown(object sender, KeyEventArgs e)

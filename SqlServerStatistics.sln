@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
+# Visual Studio 2012
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServerStatistics", "SqlServerStatistics\SqlServerStatistics.csproj", "{9257AC29-808A-4022-9263-7054819E1312}"
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9257AC29-808A-4022-9263-7054819E1312}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9257AC29-808A-4022-9263-7054819E1312}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9257AC29-808A-4022-9263-7054819E1312}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9257AC29-808A-4022-9263-7054819E1312}.Release|Any CPU.Build.0 = Release|Any CPU
 		{91B5924F-CABF-4110-A99A-D7F731692804}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{91B5924F-CABF-4110-A99A-D7F731692804}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91B5924F-CABF-4110-A99A-D7F731692804}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91B5924F-CABF-4110-A99A-D7F731692804}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9257AC29-808A-4022-9263-7054819E1312}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9257AC29-808A-4022-9263-7054819E1312}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9257AC29-808A-4022-9263-7054819E1312}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9257AC29-808A-4022-9263-7054819E1312}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

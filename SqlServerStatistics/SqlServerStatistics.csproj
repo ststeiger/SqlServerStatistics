@@ -394,6 +394,8 @@
     <Compile Include="MathNet\Window.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpecialFunctions.cs" />
+    <Compile Include="Trigonometry.cs" />
+    <Compile Include="Combinatorics.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
