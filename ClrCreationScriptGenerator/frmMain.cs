@@ -19,7 +19,7 @@ namespace ClrCreationScriptGenerator
         private void frmMain_Load(object sender, System.EventArgs e)
         {
             this.txtScript.WordWrap = false;
-            bool bLocal = true;
+            bool bLocal = false;
             bool warnCRL = false;
             string assemblyName = "SQLServerStatistics";
             
@@ -260,8 +260,8 @@ GO
 			dict.Add(typeof(System.Data.SqlTypes.SqlDecimal), "decimal(19,5)");
 			dict.Add(typeof(System.Data.SqlTypes.SqlString), "nvarchar(4000)");
 			dict.Add(typeof(System.Data.SqlTypes.SqlGuid), "uniqueidentifier");
-			dict.Add(typeof(System.Data.SqlTypes.SqlDateTime), "datetime");
-
+            dict.Add(typeof(System.Data.SqlTypes.SqlDateTime), "datetime");
+            
 			return dict;
 		} // End Sub WriteFunctionDefinition
 
@@ -282,36 +282,73 @@ GO
 					strRetType = typeDict[mi.ReturnType];
 
 
-				sb.AppendLine(@"         
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[" + mi.Name.Replace("]", "]]") + @"]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
-DROP FUNCTION [dbo].[" + mi.Name.Replace("]", "]]") + @"]
+                string methodType = "FUNCTION";
+                string typeIn = "N'FN', N'IF', N'TF', N'FS', N'FT'";
+                if (object.ReferenceEquals(mi.ReturnType, typeof(void)))
+                {
+                    methodType = "PROCEDURE";
+                    typeIn = "N'P', N'PC'";
+                    // continue;
+                }
+
+
+
+
+
+
+                sb.AppendLine(@"         
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[" + mi.Name.Replace("]", "]]") + @"]') AND type in (" + typeIn + @")) 
+DROP " + methodType + " [dbo].[" + mi.Name.Replace("]", "]]") + @"] 
 GO
 
 
 ");
 
 
+
+
+
+
 				sb.Append(@"
-CREATE FUNCTION [dbo].[" + mi.Name.Replace("]","]]") + @"](");
+CREATE " + methodType + " [dbo].[" + mi.Name.Replace("]", "]]") + @"](");
 
 				System.Reflection.ParameterInfo[] pis = mi.GetParameters();
 				for (int i = 0; i < pis.Length; ++i)
 				{
 					System.Reflection.ParameterInfo pi = pis[i];
+
+                    System.Type tReal = pi.ParameterType;
+
+                    // WTF ?
+                    if (pi.IsOut || pi.ParameterType.IsByRef)
+                        tReal = tReal.GetElementType();
+
 					string strParType = "Unknown_" + pi.ParameterType.Name;
 
-					if (typeDict.ContainsKey(pi.ParameterType))
-						strParType = typeDict[pi.ParameterType];
+                    if (typeDict.ContainsKey(tReal))
+                    {
+                        if (pi.IsOut || pi.ParameterType.IsByRef)
+                            strParType = typeDict[tReal] + " output";
+                        else
+                            strParType = typeDict[tReal];
+                    }
+                        
 
 					if (i != 0)
 						sb.Append(", ");
 
-					sb.Append("@" + pi.Name + " AS " + strParType);
+                    sb.Append("@" + pi.Name + " AS " + strParType);
 				} // Next i 
 
-				sb.AppendLine(@")
-    RETURNS " + strRetType + @" WITH EXECUTE AS CALLER
-AS EXTERNAL NAME [" + assemblyName.Replace("]", "]]") + @"].[" + t.FullName.Replace("]", "]]") + @"].[" + mi.Name.Replace("]", "]]") + @"]
+				sb.Append(@") ");
+
+
+                if (!object.ReferenceEquals(mi.ReturnType, typeof(void)))
+                    sb.Append(@"
+RETURNS " + strRetType + @" WITH EXECUTE AS CALLER ");
+
+                sb.AppendLine(@"
+AS EXTERNAL NAME [" + assemblyName.Replace("]", "]]") + @"].[" + t.FullName.Replace("]", "]]") + @"].[" + mi.Name.Replace("]", "]]") + @"] 
 GO
 
 ");
