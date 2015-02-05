@@ -396,6 +396,7 @@
     <Compile Include="MathNet\Trigonometry.cs" />
     <Compile Include="MathNet\Window.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rounding.cs" />
     <Compile Include="SpecialFunctions.cs" />
     <Compile Include="Trigonometry.cs" />
     <Compile Include="Combinatorics.cs" />
