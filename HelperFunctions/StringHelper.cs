@@ -31,6 +31,15 @@ namespace HelperFunctions
             return new SqlString(StripInvalidFileNameAndPathChars_implements(s.Value));
         }
 
+
+        // http://stackoverflow.com/questions/7580123/t-sql-varcharmax-vs-clr-string-sqlstring-sqlchars
+        [return: SqlFacet(MaxSize = -1)]
+        [Microsoft.SqlServer.Server.SqlFunction(IsDeterministic = true)]
+        public static SqlString YourSqlFunction([SqlFacet(MaxSize = -1)]SqlString sourceSS)
+        {
+            return new SqlString("bla bla");
+        }
+
         
 
         // COR.ASP.NET.StripInvalidFileNameChars("")
