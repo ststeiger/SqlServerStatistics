@@ -21,9 +21,15 @@ namespace ClrCreationScriptGenerator
             this.txtScript.WordWrap = false;
             bool bLocal = false;
             bool warnCRL = false;
-            string assemblyName = "SQLServerStatistics";
             
-			System.Reflection.Assembly ass = typeof(SqlServerStatistics.ExcelFunctions).Assembly;
+            
+            string assemblyName = "SQLServerStatistics";
+            // string assemblyName = "HelperFunctions";
+
+            //System.Type tTypeToExport = typeof(HelperFunctions.StringHelper);
+            System.Type tTypeToExport = typeof(SqlServerStatistics.ExcelFunctions);
+            System.Reflection.Assembly ass = tTypeToExport.Assembly;
+
             byte[] bytes = System.IO.File.ReadAllBytes(ass.Location);
             string strHexFile = bLocal ? "'" + ass.Location.Replace("'", "''") + "'" : 
                 "0x" + System.BitConverter.ToString(bytes).Replace("-", "");
@@ -215,7 +221,7 @@ GO
 ", assemblyName.Replace("'", "''"), strHexFile);
 
 
-			WriteFunctionDefinition (assemblyName, sb);
+            WriteFunctionDefinition(assemblyName, sb, tTypeToExport);
 
             // http://stackoverflow.com/questions/9983378/monodevelop-convert-line-ending-dialog
             // Compensate for line endings on different platforms...
@@ -223,9 +229,8 @@ GO
         } // End Sub frmMain_Load
 
 
-		public void WriteFunctionDefinition(string assemblyName, System.Text.StringBuilder sb)
+		public void WriteFunctionDefinition(string assemblyName, System.Text.StringBuilder sb, System.Type t )
 		{
-			System.Type t = typeof(SqlServerStatistics.ExcelFunctions);
 			System.Reflection.Assembly ass = t.Assembly;
 
 			System.Collections.Generic.Dictionary<System.Type, string> typeDict = initTypeDict();
