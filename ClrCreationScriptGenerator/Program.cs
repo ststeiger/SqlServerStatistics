@@ -21,6 +21,9 @@ namespace ClrCreationScriptGenerator
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMain());
+
+            // ReportProcedures.Procedures.ReturnDataTable();
+            // ReportProcedures.Procedures.ReturnPgDataTable();
         }
 
 

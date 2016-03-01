@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClrCreationScriptGenerator"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperFunctions", "HelperFunctions\HelperFunctions.csproj", "{9DBE8671-AC8E-495E-9C34-A435379C7C06}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportProcedures", "ReportProcedures\ReportProcedures.csproj", "{B641D6BA-E584-43A5-8E0D-FA0775B6D609}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{9DBE8671-AC8E-495E-9C34-A435379C7C06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DBE8671-AC8E-495E-9C34-A435379C7C06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DBE8671-AC8E-495E-9C34-A435379C7C06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B641D6BA-E584-43A5-8E0D-FA0775B6D609}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B641D6BA-E584-43A5-8E0D-FA0775B6D609}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B641D6BA-E584-43A5-8E0D-FA0775B6D609}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B641D6BA-E584-43A5-8E0D-FA0775B6D609}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

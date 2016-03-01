@@ -80,6 +80,10 @@
       <Project>{9dbe8671-ac8e-495e-9c34-a435379c7c06}</Project>
       <Name>HelperFunctions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ReportProcedures\ReportProcedures.csproj">
+      <Project>{b641d6ba-e584-43a5-8e0d-fa0775b6d609}</Project>
+      <Name>ReportProcedures</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SqlServerStatistics\SqlServerStatistics.csproj">
       <Project>{9257AC29-808A-4022-9263-7054819E1312}</Project>
       <Name>SqlServerStatistics</Name>
