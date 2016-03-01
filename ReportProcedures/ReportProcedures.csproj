@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B641D6BA-E584-43A5-8E0D-FA0775B6D609}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ReportProcedures</RootNamespace>
+    <AssemblyName>ReportProcedures</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Npgsql, Version=2.0.11.92, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\PostGreSQL\Npgsql-2.2.0-net20\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnySqlHelper.cs" />
+    <Compile Include="Procedures.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlPipeUtil.cs" />
+    <Compile Include="TypeConverter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Libs\FirebirdSql.Data.FirebirdClient.dll" />
+    <Content Include="Libs\Mono.Data.Sqlite.dll" />
+    <Content Include="Libs\MySQL\6.3.7\v2\mysql.data.cf.dll" />
+    <Content Include="Libs\MySQL\6.3.7\v2\mysql.data.dll" />
+    <Content Include="Libs\MySQL\6.3.7\v2\mysql.data.entity.dll" />
+    <Content Include="Libs\MySQL\6.3.7\v2\mysql.visualstudio.dll" />
+    <Content Include="Libs\MySQL\6.3.7\v2\mysql.web.dll" />
+    <Content Include="Libs\MySQL\6.3.7\v4\mysql.data.dll" />
+    <Content Include="Libs\MySQL\6.3.7\v4\mysql.data.entity.dll" />
+    <Content Include="Libs\MySQL\6.3.7\v4\mysql.visualstudio.dll" />
+    <Content Include="Libs\MySQL\6.3.7\v4\mysql.web.dll" />
+    <Content Include="Libs\PostGreSQL\Npgsql-2.0.11-net20\de\Npgsql.resources.dll" />
+    <Content Include="Libs\PostGreSQL\Npgsql-2.0.11-net20\es\Npgsql.resources.dll" />
+    <Content Include="Libs\PostGreSQL\Npgsql-2.0.11-net20\fi\Npgsql.resources.dll" />
+    <Content Include="Libs\PostGreSQL\Npgsql-2.0.11-net20\fr\Npgsql.resources.dll" />
+    <Content Include="Libs\PostGreSQL\Npgsql-2.0.11-net20\ja\Npgsql.resources.dll" />
+    <Content Include="Libs\PostGreSQL\Npgsql-2.0.11-net20\Mono.Security.dll" />
+    <Content Include="Libs\PostGreSQL\Npgsql-2.0.11-net20\Npgsql.dll" />
+    <Content Include="Libs\PostGreSQL\Npgsql-2.0.11-net20\policy.2.0.Npgsql.dll" />
+    <Content Include="Libs\PostGreSQL\Npgsql-2.0.11-net20\zh-CN\Npgsql.resources.dll" />
+    <Content Include="Libs\PostGreSQL\Npgsql-2.2.0-net20\de\Npgsql.resources.dll" />
+    <Content Include="Libs\PostGreSQL\Npgsql-2.2.0-net20\es\Npgsql.resources.dll" />
+    <Content Include="Libs\PostGreSQL\Npgsql-2.2.0-net20\fi\Npgsql.resources.dll" />
+    <Content Include="Libs\PostGreSQL\Npgsql-2.2.0-net20\fr\Npgsql.resources.dll" />
+    <Content Include="Libs\PostGreSQL\Npgsql-2.2.0-net20\ja\Npgsql.resources.dll" />
+    <Content Include="Libs\PostGreSQL\Npgsql-2.2.0-net20\LICENSE.txt" />
+    <Content Include="Libs\PostGreSQL\Npgsql-2.2.0-net20\Mono.Security.dll" />
+    <Content Include="Libs\PostGreSQL\Npgsql-2.2.0-net20\Npgsql.dll" />
+    <Content Include="Libs\PostGreSQL\Npgsql-2.2.0-net20\Npgsql.pdb" />
+    <Content Include="Libs\PostGreSQL\Npgsql-2.2.0-net20\Npgsql.xml" />
+    <Content Include="Libs\PostGreSQL\Npgsql-2.2.0-net20\zh-CN\Npgsql.resources.dll" />
+    <Content Include="Libs\SQLite.Interop.x32.dll" />
+    <Content Include="Libs\SQLite.Interop.x64.dll" />
+    <Content Include="Libs\System.Data.SQLite.DLL" />
+    <Content Include="Libs\System.Data.SQLite.x32.dll" />
+    <Content Include="Libs\System.Data.SQLite.x64.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Libs\PostGreSQL\Npgsql-2.2.0-net20\README.md" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
