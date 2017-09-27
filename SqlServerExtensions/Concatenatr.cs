@@ -3,6 +3,10 @@ using System.Data.SqlTypes;
 using Microsoft.SqlServer.Server;
 
 
+// https://www.mssqltips.com/sqlservertip/2022/concat-aggregates-sql-server-clr-function/
+// https://sqlwithmanoj.com/2016/12/23/new-function-string_agg-with-option-within-group-sql-server-vnext-2018/
+// https://sqlperformance.com/2016/12/sql-performance/sql-server-v-next-string_agg-performance
+// https://docs.microsoft.com/en-us/sql/t-sql/functions/string-agg-transact-sql
 namespace SqlServerExtensions
 {
 
