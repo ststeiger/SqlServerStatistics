@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServerStatistics", "SqlServerStatistics\SqlServerStatistics.csproj", "{9257AC29-808A-4022-9263-7054819E1312}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperFunctions", "HelperFunctions\HelperFunctions.csproj", "{9DBE8671-AC8E-495E-9C34-A435379C7C06}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportProcedures", "ReportProcedures\ReportProcedures.csproj", "{B641D6BA-E584-43A5-8E0D-FA0775B6D609}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServerExtensions", "SqlServerExtensions\SqlServerExtensions.csproj", "{331E8766-2DCB-4F87-BCF6-07AC1D6EA64E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +35,15 @@ Global
 		{B641D6BA-E584-43A5-8E0D-FA0775B6D609}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B641D6BA-E584-43A5-8E0D-FA0775B6D609}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B641D6BA-E584-43A5-8E0D-FA0775B6D609}.Release|Any CPU.Build.0 = Release|Any CPU
+		{331E8766-2DCB-4F87-BCF6-07AC1D6EA64E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{331E8766-2DCB-4F87-BCF6-07AC1D6EA64E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{331E8766-2DCB-4F87-BCF6-07AC1D6EA64E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{331E8766-2DCB-4F87-BCF6-07AC1D6EA64E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5E9A2956-1420-40B1-802B-BFD477CBE856}
 	EndGlobalSection
 EndGlobal

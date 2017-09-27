@@ -23,12 +23,18 @@ namespace ClrCreationScriptGenerator
             bool warnCRL = false;
             
             
-            string assemblyName = "SQLServerStatistics";
+            // string assemblyName = "SQLServerStatistics";
+            string assemblyName = "SqlServerStatistics";
             // string assemblyName = "HelperFunctions";
+            // assemblyName = "SqlServerExtensions";
 
-            //System.Type tTypeToExport = typeof(HelperFunctions.StringHelper);
-            System.Type tTypeToExport = typeof(SqlServerStatistics.ExcelFunctions);
+            // System.Type tTypeToExport = typeof(HelperFunctions.StringHelper);
+            // System.Type tTypeToExport = typeof(SqlServerStatistics.ExcelFunctions);
+            System.Type tTypeToExport = typeof(SqlServerExtensions.Password);
+
             System.Reflection.Assembly ass = tTypeToExport.Assembly;
+            assemblyName = ass.GetName().Name;
+            System.Console.WriteLine(assemblyName);
 
             byte[] bytes = System.IO.File.ReadAllBytes(ass.Location);
             string strHexFile = bLocal ? "'" + ass.Location.Replace("'", "''") + "'" : 

@@ -84,6 +84,10 @@
       <Project>{b641d6ba-e584-43a5-8e0d-fa0775b6d609}</Project>
       <Name>ReportProcedures</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SqlServerExtensions\SqlServerExtensions.csproj">
+      <Project>{331e8766-2dcb-4f87-bcf6-07ac1d6ea64e}</Project>
+      <Name>SqlServerExtensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SqlServerStatistics\SqlServerStatistics.csproj">
       <Project>{9257AC29-808A-4022-9263-7054819E1312}</Project>
       <Name>SqlServerStatistics</Name>
