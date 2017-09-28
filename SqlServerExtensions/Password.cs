@@ -10,11 +10,11 @@ namespace SqlServerExtensions
     public class Password
     {
 
-        //[SqlFunction]
-        //public static SqlDouble Sin(SqlDouble x)
-        //{
-        //    return new SqlDouble(123);
-        //}
+        [SqlFunction]
+        private static SqlDouble Sin(SqlDouble x)
+        {
+            return new SqlDouble(123);
+        }
 
 
         [SqlFunction]

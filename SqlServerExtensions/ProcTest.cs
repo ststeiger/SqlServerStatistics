@@ -15,8 +15,8 @@ namespace SqlServerExtensions
 
         // https://msdn.microsoft.com/en-us/library/ms131094.aspx
         // https://msdn.microsoft.com/en-us/library/5czye81z(v=vs.90).aspx
-        [Microsoft.SqlServer.Server.SqlProcedure]  
-        public static void PriceSum(out SqlInt32 value)
+        [Microsoft.SqlServer.Server.SqlProcedure]
+        private static void PriceSum(out SqlInt32 value)
         {
             using (System.Data.Common.DbConnection connection = new SqlConnection("context connection=true"))
             {
@@ -43,6 +43,24 @@ namespace SqlServerExtensions
 
         } // End Sub PriceSum 
 
+
+        [Microsoft.SqlServer.Server.SqlProcedure]
+        private static void HelloWorld()
+        {
+            SqlContext.Pipe.Send("Hello world! It's now " + System.DateTime.Now.ToString() + "\n");
+
+            using (SqlConnection connection = new SqlConnection("context connection=true"))
+            {
+                if(connection.State != System.Data.ConnectionState.Open)
+                    connection.Open();
+
+                SqlCommand command = new SqlCommand("SELECT ProductNumber FROM ProductMaster", connection);
+                SqlDataReader reader = command.ExecuteReader();
+                SqlContext.Pipe.Send(reader);
+            } // End Using connection 
+
+        } // End Sub HelloWorld 
+        
 
     } // End Class 
 
