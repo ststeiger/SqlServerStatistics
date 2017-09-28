@@ -38,6 +38,7 @@
     <Compile Include="Concatenatr.cs" />
     <Compile Include="Password.cs" />
     <Compile Include="PasswordEncryption.cs" />
+    <Compile Include="ProcTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

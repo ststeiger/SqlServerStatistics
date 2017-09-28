@@ -287,7 +287,13 @@ GO
 
 			foreach (System.Reflection.MethodInfo mi in mis)
 			{
-				string strRetType = "Unknown_" + mi.ReturnType.Name;
+                object[] attFuncs = mi.GetCustomAttributes(typeof(Microsoft.SqlServer.Server.SqlFunctionAttribute), true);
+                object[] attProcs = mi.GetCustomAttributes(typeof(Microsoft.SqlServer.Server.SqlProcedureAttribute), true);
+
+                if (attFuncs.Length == 0 && attProcs.Length == 0)
+                    continue;
+                
+                string strRetType = "Unknown_" + mi.ReturnType.Name;
 
 				if (typeDict.ContainsKey(mi.ReturnType))
 					strRetType = typeDict[mi.ReturnType];
